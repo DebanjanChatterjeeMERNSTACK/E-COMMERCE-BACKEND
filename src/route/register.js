@@ -24,12 +24,12 @@ const upload = multer({ storage: storage })
 route.post("/register", upload.single('image'), async (req, res) => {
     const { name, email, password, phone, address, nearlocation, city, state, pincode } = req.body
     const image = `http://localhost:9000/upload/${req.file.filename}`
-    const array_of_allowed_file_types = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif'];
+   
 
 
 
     if (!(name === "") && !(email === "") && !(password === "") && !(phone === "") && !(address === "") && !(nearlocation === "") && !(city === "") && !(state === "") && !(pincode === "")) {
-        if (array_of_allowed_file_types.includes(req.file.mimetype)) {
+       
 
 
             User.findOne({ email: email }, (err, user) => {
@@ -48,9 +48,6 @@ route.post("/register", upload.single('image'), async (req, res) => {
 
                 }
             })
-        } else {
-            res.send({ mess: "please select .png, .jpeg, .jpg, .gif" })
-        }
 
     } else {
         res.send({ mess: "fill the all filed" })
