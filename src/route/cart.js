@@ -5,7 +5,8 @@ const validation = require("../midileware/midilware");
 
 
 
-route.post("/cart", (req, res) => {
+route.post("/cart",validation, (req, res) => {
+    
     const { email, id, brand, title, category, description, discountPercentage, price, rating, quentity, thumbnail } = req.body
 
 
